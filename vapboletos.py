@@ -19,6 +19,9 @@ class VapboletosApp:
         #3: Create the mainwindow
         self.mainwindow = builder.get_object('notebook1')
         self.mainwindow.master.title("VAP Boletos")
+        self.combobox1 = builder.get_object('combobox1')
+        self.combobox1['values'] = ['aucelio', 'richard', 'fran']
+
 
     def run(self):
         self.mainwindow.mainloop()
