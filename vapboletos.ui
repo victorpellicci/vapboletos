@@ -225,7 +225,7 @@
                         </child>
                         <child>
                           <object class="ttk.Button" id="button2">
-                            <property name="command" type="command" cbtype="simple">cadastrarsacado</property>
+                            <property name="command" type="command" cbtype="simple">exibir_dados</property>
                             <property name="text" translatable="yes">Cadastrar Sacado</property>
                             <layout manager="grid">
                               <property name="column">1</property>
@@ -482,7 +482,7 @@
                         </child>
                         <child>
                           <object class="ttk.Button" id="button5">
-                            <property name="command" type="command" cbtype="simple">editarcedente</property>
+                            <property name="command" type="command" cbtype="simple">exibir_dados_filtro</property>
                             <property name="text" translatable="yes">Editar cedente</property>
                             <layout manager="grid">
                               <property name="column">0</property>
