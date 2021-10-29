@@ -21,10 +21,24 @@ class VapboletosApp:
         self.mainwindow.master.title("VAP Boletos")
         self.combobox1 = builder.get_object('combobox1')
         self.combobox1['values'] = ['aucelio', 'richard', 'fran']
-
+        self.entry1 = builder.get_object('entry1')
+        self.entry21 = builder.get_object('entry21')
+        self.entry10 = builder.get_object('entry10')
+        self.entry11 = builder.get_object('entry11')
 
     def run(self):
         self.mainwindow.mainloop()
+    def cadastrarcedente(self):
+    	dados={}
+    	dados['nome_cedente'] = self.entry1.get()
+    	dados['nome_banco'] = self.entry21.get()
+    	dados['nome_agencia'] = self.entry10.get()
+    	dados['nome_conta'] = self.entry11.get()
+    	print(dados)
+
+
+
+    	pass
 
 if __name__ == '__main__':
 
