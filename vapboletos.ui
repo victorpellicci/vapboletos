@@ -225,7 +225,7 @@
                         </child>
                         <child>
                           <object class="ttk.Button" id="button2">
-                            <property name="command" type="command" cbtype="simple">exibir_dados</property>
+                            <property name="command" type="command" cbtype="simple">cadastrarsacado</property>
                             <property name="text" translatable="yes">Cadastrar Sacado</property>
                             <layout manager="grid">
                               <property name="column">1</property>
@@ -251,6 +251,17 @@
                               <property name="column">0</property>
                               <property name="propagate">True</property>
                               <property name="row">3</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="button8">
+                            <property name="command" type="command" cbtype="simple">exibir_dados</property>
+                            <property name="text" translatable="yes">exibir dados</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="propagate">True</property>
+                              <property name="row">15</property>
                             </layout>
                           </object>
                         </child>

@@ -24,10 +24,21 @@ class VapboletosApp:
         self.mainwindow.master.title("VAP Boletos")
         self.combobox1 = builder.get_object('combobox1')
         self.combobox1['values'] = ['aucelio', 'richard', 'fran']
+
+        # widgets da aba cadastro lado esquerdo
         self.entry1 = builder.get_object('entry1')
         self.entry21 = builder.get_object('entry21')
         self.entry10 = builder.get_object('entry10')
         self.entry11 = builder.get_object('entry11')
+
+        # widgets da aba cadastro lado direito
+        self.entry12 = builder.get_object('entry12')
+        self.entry14 = builder.get_object('entry14')
+        self.entry13 = builder.get_object('entry13')
+        self.entry15 = builder.get_object('entry15')
+        self.entry16 = builder.get_object('entry16')
+        self.entry17 = builder.get_object('entry17')
+
         self.madruga = Model()
 
     def run(self):
@@ -39,15 +50,24 @@ class VapboletosApp:
     def cadastrarcedente(self):
 
         dados={}
-        dados['nome_cedente'] = self.entry1.get()
-        dados['nome_banco'] = self.entry21.get()
-        dados['nome_agencia'] = self.entry10.get()
-        dados['nome_conta'] = self.entry11.get()
+        dados['usuario'] = self.entry1.get()
+        dados['banco'] = self.entry21.get()
+        dados['agencia'] = self.entry10.get()
+        dados['conta'] = self.entry11.get()
         print(dados)
         self.madruga.save(dados)
 
+    def cadastrarsacado(self):
 
-
+        dados={}
+        dados['usuario'] = self.entry12.get()
+        dados['CPF'] = self.entry14.get()
+        dados['CEP'] = self.entry13.get()
+        dados['endereco'] = self.entry15.get()
+        dados['cidade'] = self.entry16.get()
+        dados['estado'] = self.entry17.get()
+        print(dados)
+        self.madruga.save(dados)
 
 
     def exibir_dados(self):

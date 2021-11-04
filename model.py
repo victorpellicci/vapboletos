@@ -31,10 +31,10 @@ class Model(Donaclotilde):
     def listall(self):
         
         self.select('id') #indice 0 
-        self.select('nome_cedente')#indice 1
-        self.select('nome_banco')#indice 2
-        self.select('nome_agencia')#indice 3
-        self.select('nome_conta')#indice 4
+        self.select('usuario')#indice 1
+        self.select('banco')#indice 2
+        self.select('agencia')#indice 3
+        self.select('conta')#indice 4
 
         self.from_table("usuarios")
         sql = self.get()
