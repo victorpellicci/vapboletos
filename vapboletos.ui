@@ -302,6 +302,7 @@
                         </child>
                         <child>
                           <object class="ttk.Combobox" id="combobox5">
+                            <bind sequence="&lt;&lt;ComboboxSelected&gt;&gt;" handler="carregarusuarioesquerda" add="" />
                             <layout manager="grid">
                               <property name="column">0</property>
                               <property name="padx">25</property>

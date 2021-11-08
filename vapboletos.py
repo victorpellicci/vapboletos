@@ -21,8 +21,9 @@ class VapboletosApp:
         #3: Create the mainwindow
         self.mainwindow = builder.get_object('notebook1')
         self.mainwindow.master.title("VAP Boletos")
-        self.combobox1 = builder.get_object('combobox1')
-        self.combobox1['values'] = ['aucelio', 'richard', 'fran']
+        
+        # Chamar model
+        self.madruga = Model()
 
         # widgets da aba incluir lado esquerdo
         self.entry1 = builder.get_object('entry1')
@@ -40,7 +41,7 @@ class VapboletosApp:
 
         # widgets da aba editar lado esquerdo
         self.combobox5 = builder.get_object('combobox5')
-        self.combobox5['values'] = ['aucelio', 'richard', 'fran']
+        self.combobox5['values'] = self.madruga.listalleditaresquerdo()
         self.entry18 = builder.get_object('entry18')
         self.entry22 = builder.get_object('entry22')
         self.entry19 = builder.get_object('entry19')
@@ -49,7 +50,7 @@ class VapboletosApp:
 
         # widgets da aba editar lado direito
         self.combobox6 = builder.get_object('combobox6')
-        self.combobox6['values'] = [['aucelio','conta1'], ['richard','conta2'], ['fran',"conta3"]]
+        self.combobox6['values'] = self.madruga.listalleditardireito()
         self.entry23 = builder.get_object('entry23')
         self.entry28 = builder.get_object('entry28')
         self.entry24 = builder.get_object('entry24')
@@ -103,15 +104,12 @@ class VapboletosApp:
             x=x+1  
         self.spinbox6['values'] = ano
 
-        self.madruga = Model()
-
     def run(self):
         self.mainwindow.mainloop()
 
     def cadastrarcedente(self):
 
         dados={}
-
         dados['usuario'] = self.entry1.get()
         dados['banco'] = self.entry21.get()
         dados['agencia'] = self.entry10.get()
@@ -122,7 +120,7 @@ class VapboletosApp:
         self.entry21.delete(0, 'end')
         self.entry10.delete(0, 'end')
         self.entry11.delete(0, 'end')
-
+        self.combobox5['values'] = self.madruga.listalleditaresquerdo()
 
     def cadastrarsacado(self):
 
@@ -141,14 +139,18 @@ class VapboletosApp:
         self.entry15.delete(0, 'end')
         self.entry16.delete(0, 'end')
         self.entry17.delete(0, 'end')
+        self.combobox6['values'] = self.madruga.listalleditardireito()
 
     def update(self):
         pass
 
     def editarcedente(self):
-        self.label35.config(text='Cedente editado!')
-        self.label35.after(3000, self.label35.forget())
+        dados={}
+        dados['id']= '4'
+        dados['usuario'] = self.entry18.get()
 
+        self.madruga.update(dados)
+        #update usuarios set usuario =  where id = 5
 
     def editarsacado(self):
         pass
@@ -173,6 +175,15 @@ class VapboletosApp:
         dados = self.madruga.list_filt(busca)
         print(dados)
 
+    def carregarusuarioesquerda(self, asd):
+        nomecomid = str(self.combobox5.get())
+        print(nomecomid)
+        nome = nomecomid.split(" ")
+        print(nome)
+        print(nome[0])
+        self.list_filt.select(nome)
+        self.entry18.insert(0, nome.split(" ", 1))
+        print("funciona")
 
 if __name__ == '__main__':
 

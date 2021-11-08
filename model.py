@@ -40,8 +40,8 @@ class Model(Donaclotilde):
 
         self.where(kwargs['id'],"id","=")
 
-        sql = self.set("usuarios",valores,colunas)
-        #print(sql)
+        sql = self.setup("usuarios",valores,colunas)
+        print(sql)
         self.insert(sql)
     def listall(self):
         
@@ -51,6 +51,26 @@ class Model(Donaclotilde):
         self.select('agencia')#indice 3
         self.select('conta')#indice 4
 
+        self.from_table("usuarios")
+        sql = self.get()
+        data = self.result_list(sql)
+        return data
+
+    def listalleditaresquerdo(self):
+        
+        self.select('id') #indice 0 
+        self.select('usuario')#indice 1
+        
+        self.from_table("usuarios")
+        sql = self.get()
+        data = self.result_list(sql)
+        return data
+
+    def listalleditardireito(self):
+        
+        self.select('id') #indice 0 
+        self.select('usuario')#indice 1
+        
         self.from_table("usuarios")
         sql = self.get()
         data = self.result_list(sql)
