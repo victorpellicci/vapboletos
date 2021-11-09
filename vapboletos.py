@@ -121,6 +121,7 @@ class VapboletosApp:
         self.entry10.delete(0, 'end')
         self.entry11.delete(0, 'end')
         self.combobox5['values'] = self.madruga.listalleditaresquerdo()
+        self.combobox6['values'] = self.madruga.listalleditardireito()
 
     def cadastrarsacado(self):
 
@@ -139,19 +140,27 @@ class VapboletosApp:
         self.entry15.delete(0, 'end')
         self.entry16.delete(0, 'end')
         self.entry17.delete(0, 'end')
+        self.combobox5['values'] = self.madruga.listalleditaresquerdo()
         self.combobox6['values'] = self.madruga.listalleditardireito()
 
     def update(self):
         pass
 
     def editarcedente(self):
+        nomecomid = str(self.combobox5.get())
+        nome = nomecomid.split(" ")
+        idnome = nome[0]
+        print(idnome)
+
         dados={}
-        dados['id']= '4'
+        dados['id']= idnome
         dados['usuario'] = self.entry18.get()
+        dados['banco'] = self.entry22.get()
+        dados['agencia'] = self.entry19.get()
+        dados['conta'] = self.entry20.get()
 
         self.madruga.update(dados)
-        #update usuarios set usuario =  where id = 5
-
+        
     def editarsacado(self):
         pass
 
@@ -177,13 +186,29 @@ class VapboletosApp:
 
     def carregarusuarioesquerda(self, asd):
         nomecomid = str(self.combobox5.get())
-        print(nomecomid)
         nome = nomecomid.split(" ")
-        print(nome)
-        print(nome[0])
-        self.list_filt.select(nome)
-        self.entry18.insert(0, nome.split(" ", 1))
-        print("funciona")
+        idnome = nome[0]
+        linha = self.madruga.list_filt(idnome)
+        self.entry18.delete(0, 'end')
+        self.entry22.delete(0, 'end')
+        self.entry19.delete(0, 'end')
+        self.entry20.delete(0, 'end')
+        self.entry18.insert(0, linha[0][1])
+        self.entry22.insert(0, linha[0][2])
+        self.entry19.insert(0, linha[0][3])
+        self.entry20.insert(0, linha[0][4])
+
+    def carregarusuariodireita(self, asd):
+        nomecomid = str(self.combobox6.get())
+        nome = nomecomid.split(" ")
+        idnome = nome[0]
+        linha = self.madruga.list_filt(idnome)
+        self.entry23.insert(0, linha[0][1])
+        self.entry28.insert(0, linha[0][5])
+        self.entry24.insert(0, linha[0][6])
+        self.entry25.insert(0, linha[0][7])
+        self.entry26.insert(0, linha[0][8])
+        self.entry27.insert(0, linha[0][9])
 
 if __name__ == '__main__':
 

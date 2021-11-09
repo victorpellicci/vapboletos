@@ -92,7 +92,7 @@ class Model(Donaclotilde):
 
         self.from_table("usuarios")
         if search:
-            self.where(search,"usuario")
+            self.where(search,"id")
             
         sql = self.get()
         data = self.result_list(sql)
